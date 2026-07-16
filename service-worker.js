@@ -1,4 +1,4 @@
-const CACHE_NAME = 'liberafrutas-v3';
+const CACHE_NAME = 'liberafrutas-v8';
 const ASSETS = [
     './',
     './index.html',
@@ -8,7 +8,6 @@ const ASSETS = [
     './icon-512-maskable.png',
     './apple-touch-icon.png'
 ];
-
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
@@ -16,7 +15,6 @@ self.addEventListener('install', event => {
             .then(() => self.skipWaiting())
     );
 });
-
 self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys().then(keys => {
@@ -27,7 +25,6 @@ self.addEventListener('activate', event => {
         }).then(() => self.clients.claim())
     );
 });
-
 self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request)
